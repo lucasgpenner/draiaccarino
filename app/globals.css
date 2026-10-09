@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+/*
+ * Sistema de diseño: azul, blanco y dorado.
+ * Contraste: el dorado se usa como decoración o fondo de botón con texto navy.
+ * Nunca como color de texto corrido sobre blanco.
+ */
+@theme {
+  --color-navy-900: #0e1f3a;
+  --color-navy-700: #1b3a63;
+  --color-gold-500: #b8925a;
+  --color-ivory-50: #faf8f3;
+  --color-white: #ffffff;
+
+  --font-serif: var(--font-lora), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-lato), system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-white text-navy-900 font-sans antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-serif text-navy-900;
+  }
+
+  :focus-visible {
+    @apply outline-2 outline-offset-2 outline-navy-700;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
