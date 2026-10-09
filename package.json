@@ -7,11 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "typecheck": "tsc --noEmit && tsc -p tsconfig.functions.json",
-    "pages:dev": "npm run build && wrangler pages dev out --compatibility-date=2026-01-01",
-    "d1:migrate:local": "wrangler d1 migrations apply DB --local",
-    "d1:migrate:remote": "wrangler d1 migrations apply DB --remote",
-    "cf-typegen": "wrangler types --env-interface Env"
+    "typecheck": "tsc --noEmit",
+    "worker:dev": "npm run build && wrangler dev",
+    "d1:migrate:local": "wrangler d1 migrations apply db-draiaccarino --local",
+    "d1:migrate:remote": "wrangler d1 migrations apply db-draiaccarino --remote"
   },
   "dependencies": {
     "next": "16.4.0",

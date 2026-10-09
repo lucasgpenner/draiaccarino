@@ -1,7 +1,13 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "draiaccarino",
-  "pages_build_output_dir": "./out",
+  "main": "src/index.ts",
+  "assets": {
+    "directory": "./out",
+    "binding": "ASSETS",
+    "run_worker_first": false,
+    "not_found_handling": "404-page"
+  },
   "compatibility_date": "2026-01-01",
   "d1_databases": [
     {

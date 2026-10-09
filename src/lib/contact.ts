@@ -1,9 +1,9 @@
 import { CONSENT_TEXT, PRIVACY_VERSION } from "../../lib/consent";
-import { countByIpSince, countSince, insertConsulta, purgeExpired, setEmailStatus } from "../_lib/db";
-import { sendNotification } from "../_lib/email";
-import { contactSchema, toFieldErrors } from "../_lib/validate";
-import { clientIp, hmacHex, verifyTurnstile } from "../_lib/security";
-import type { Env } from "../_lib/types";
+import { countByIpSince, countSince, insertConsulta, purgeExpired, setEmailStatus } from "./db";
+import { sendNotification } from "./email";
+import { contactSchema, toFieldErrors } from "./validate";
+import { clientIp, hmacHex, verifyTurnstile } from "./security";
+import type { Env } from "./types";
 
 /** Límites de abuso y consumo. Ajustables sin tocar la lógica. */
 const LIMITS = {
@@ -54,15 +54,15 @@ function isConfigured(env: Env): boolean {
   );
 }
 
-export const onRequest: PagesFunction<Env> = async (context) => {
+export async function handleContactRequest(request: Request, env: Env): Promise<Response> {
   try {
-    return await handleContact(context.request, context.env);
+    return await handleContact(request, env);
   } catch (err) {
     // Sin datos personales ni stack trace hacia el cliente.
     console.error("contacto: error interno", err instanceof Error ? err.name : "desconocido");
     return json({ ok: false, message: MSG.unavailable }, 500);
   }
-};
+}
 
 async function handleContact(request: Request, env: Env): Promise<Response> {
   if (request.method !== "POST") {

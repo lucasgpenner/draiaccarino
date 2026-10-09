@@ -1,3 +1,5 @@
+import type { D1Database } from "./types";
+
 export type ConsultaRow = {
   id: string;
   createdAt: number;
