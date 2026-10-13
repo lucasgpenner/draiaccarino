@@ -38,17 +38,26 @@ export function serializeJsonLd(data: unknown): string {
   return JSON.stringify(data).replace(/</g, "\\u003c");
 }
 
-/** LegalService con cobertura por jurisdicción. Sin PostalAddress a propósito. */
+/**
+ * LegalService con cobertura por jurisdicción. Sin PostalAddress a propósito.
+ * `sameAs` y `image` se omiten mientras no existan; no se inventan perfiles.
+ */
 export function legalServiceJsonLd() {
+  const siteUrl = siteConfig.url.replace(/\/$/, "");
+  const sameAs = [siteConfig.social.instagram, siteConfig.social.linkedin].filter(
+    (u): u is string => Boolean(u),
+  );
   return {
     "@context": "https://schema.org",
     "@type": "LegalService",
+    "@id": `${siteUrl}/#legalservice`,
     name: siteConfig.name,
     description: siteConfig.description,
-    url: siteConfig.url,
+    url: `${siteUrl}/`,
     telephone: `+${siteConfig.contact.whatsappNumber}`,
     email: siteConfig.contact.email,
     inLanguage: siteConfig.locale,
+    ...(sameAs.length > 0 ? { sameAs } : {}),
     areaServed: [
       { "@type": "AdministrativeArea", name: siteConfig.coverage.caba.label },
       { "@type": "AdministrativeArea", name: "Provincia de Buenos Aires" },

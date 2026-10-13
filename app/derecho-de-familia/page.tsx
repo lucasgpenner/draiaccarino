@@ -7,9 +7,9 @@ import { buildMetadata, faqPageJsonLd, serializeJsonLd } from "@/lib/seo";
 import { whatsappUrl } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
-  title: "Derecho de familia en CABA y GBA: divorcios, alimentos y régimen de comunicación",
+  title: "Derecho de familia en CABA y GBA",
   description:
-    "Abogada de familia en CABA y Provincia de Buenos Aires. Te acompañamos en divorcios, cuota alimentaria y régimen de comunicación, con una mirada humana y estrategia clara.",
+    "Divorcios, cuota alimentaria y régimen de comunicación en CABA y Provincia de Buenos Aires. Acompañamiento humano y estrategia clara para tu caso.",
   path: "/derecho-de-familia/",
 });
 

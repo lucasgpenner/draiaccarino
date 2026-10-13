@@ -5,9 +5,8 @@ import { useEffect, useId, useRef, useState } from "react";
 import { siteConfig } from "@/lib/site-config";
 
 const navItems = [
-  { label: "Áreas", href: "/#areas" },
-  { label: "Cobertura", href: "/#cobertura" },
   { label: "Nosotros", href: "/#nosotros" },
+  { label: "Cobertura", href: "/contacto/#cobertura" },
   { label: "Derecho de familia", href: "/derecho-de-familia/" },
 ];
 
@@ -44,7 +43,7 @@ export function Header() {
           <span className="font-serif text-lg font-semibold text-navy-900 md:text-xl">
             {siteConfig.name}
           </span>
-          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gold-500" aria-hidden="true">
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-gold-700" aria-hidden="true">
             {siteConfig.tagline}
           </span>
         </Link>

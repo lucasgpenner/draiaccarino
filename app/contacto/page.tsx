@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ContactForm } from "@/components/ContactForm";
+import { CoverageMap } from "@/components/CoverageMap";
 import { buildMetadata } from "@/lib/seo";
 import { siteConfig, whatsappUrl } from "@/lib/site-config";
 
 export const metadata = buildMetadata({
   title: "Contacto",
   description:
-    "Contanos tu caso por formulario o WhatsApp. Atendemos en CABA y Provincia de Buenos Aires.",
+    "Contanos tu caso por formulario o WhatsApp. Atendemos en CABA y Provincia de Buenos Aires, con cobertura por zona.",
   path: "/contacto/",
 });
 
@@ -63,6 +64,21 @@ export default function ContactoPage() {
 
         <ContactForm />
       </div>
+
+      <section id="cobertura" aria-labelledby="cobertura-detalle" className="scroll-mt-24 bg-ivory-50">
+        <div className="mx-auto w-full max-w-5xl px-6 py-16">
+          <h2 id="cobertura-detalle" className="text-3xl leading-tight md:text-4xl">
+            Cobertura por zona
+          </h2>
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-navy-900/85">
+            Atendemos en toda la Ciudad y en los partidos del Gran Buenos Aires que se detallan. Si tu localidad
+            no aparece, consultanos igual.
+          </p>
+          <div className="mt-10">
+            <CoverageMap />
+          </div>
+        </div>
+      </section>
     </main>
   );
 }

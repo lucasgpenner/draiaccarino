@@ -7,6 +7,14 @@ import { PRIVACY_VERSION } from "./consent";
 
 const siteUrlFromEnv = process.env.NEXT_PUBLIC_SITE_URL?.trim();
 
+// En build de producción la URL es obligatoria: sin ella canonicals, OG,
+// sitemap y JSON-LD quedarían apuntando a localhost.
+if (process.env.NODE_ENV === "production" && !siteUrlFromEnv) {
+  throw new Error(
+    "Falta NEXT_PUBLIC_SITE_URL. Definila en el entorno de build (ej.: https://tu-dominio.com).",
+  );
+}
+
 export const siteConfig = {
   name: "Dra. Iaccarino & Asociados",
   shortName: "Iaccarino & Asociados",
